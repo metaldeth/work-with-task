@@ -30,10 +30,10 @@ export type FetchMainUserDataResAction = {
 }
 
 export type Union = 
-  SingInReqAction
-  | SingInResAction
-  | SingUpReqAction
-  | SingUpResAction
-  | FetchMainUserDataReqAction
-  | FetchMainUserDataResAction
-  | RequestErrorAction;
+    SingInReqAction
+    | SingInResAction
+    | SingUpReqAction
+    | SingUpResAction
+    | FetchMainUserDataReqAction
+    | FetchMainUserDataResAction
+    | RequestErrorAction;
