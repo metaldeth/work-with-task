@@ -72,7 +72,6 @@ export const taskReducer = (
                         payload.id
                     ]
                 }
-
             }
         }
         case types.EDIT_TASK_RES: {

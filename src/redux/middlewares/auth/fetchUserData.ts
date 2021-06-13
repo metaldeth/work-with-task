@@ -4,11 +4,11 @@ import { ApplicationState } from '../../store';
 import { Union as AuthActionUnion } from '../../actions/authTypes';
 import { fetchMainUserDataRes } from '../../actions/auth';
 import { requestError } from '../../actions/system';
-import { FETCH_MAIN_USER_DATA_REQ } from '../../constans/auth';
+import { FETCH_MAIN_USER_DATA_REQ, SING_IN_RES } from '../../constans/auth';
 import { fetchMainUserData } from '../../../api/auth';
 
 export const fetchMainUserDataMiddleware = (storeData: StoreDataForMiddleware) => (next: Dispatch) => (action: AuthActionUnion) => {
-    if (action.type !== FETCH_MAIN_USER_DATA_REQ) return next(action);
+    if (![FETCH_MAIN_USER_DATA_REQ, SING_IN_RES].includes(action.type)) return next(action);
     fetchMainUserData()
         .then((res) => {
             storeData.dispatch(fetchMainUserDataRes(res))

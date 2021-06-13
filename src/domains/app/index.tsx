@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Link, Route, Switch } from 'react-router-dom';
+import { AuthGourd } from "../../components/authRoute";
+import { SignIn } from "../auth/signIn";
+import { SignUp } from "../auth/signUp";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Switch>
+        <Route path='/auth/signIn'>
+          <AuthGourd mushAuth = {false}>
+            <SignIn/>
+          </AuthGourd>
+        </Route>
+        <Route path='/auth/signUp'>
+          <AuthGourd mushAuth = {false}>
+            <SignUp/>
+          </AuthGourd>
+        </Route>
+        <Route path="/">
+          <AuthGourd>
+            hello
+          </AuthGourd>
+        </Route>
+      </Switch>
+    </>
   );
 }
 

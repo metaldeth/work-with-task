@@ -9,7 +9,7 @@ import { editTaskList } from '../../../api/taskList';
 
 export const editTaskListMiddleware = (storeData: StoreDataForMiddleware) => (next: Dispatch) => (action: TaskListUnion) => {
     if (action.type !== EDIT_TASK_LIST_REQ) return next(action);
-    editTaskList(action.id)
+    editTaskList(action.id, action.payload)
         .then((payload) => {
             storeData.dispatch(editTaskListResAction(payload))
         })

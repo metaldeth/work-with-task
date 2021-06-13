@@ -9,7 +9,7 @@ import { createTaskList } from '../../../api/taskList';
 
 export const createTaskListMiddleware = (storeData: StoreDataForMiddleware) => (next: Dispatch) => (action: TaskListUnion) => {
     if (action.type !== CREATE_TASK_LIST_REQ) return next(action);
-    createTaskList()
+    createTaskList(action.payload)
         .then((payload) => {
             storeData.dispatch(createTaskListResAction(payload))
         })

@@ -1,5 +1,5 @@
 export interface MainUserData {
     id: number;
-    userName: string;
+    username: string;
     email: string;
 }

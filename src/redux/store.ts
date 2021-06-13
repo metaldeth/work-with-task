@@ -1,17 +1,18 @@
-import { createStore, StoreEnhancer, applyMiddleware } from 'redux';
-import { rootReducer, ApplicationState as ApplicationStateInner } from "./reducers";
+import { createStore, compose, StoreEnhancer, applyMiddleware } from 'redux';
+import { rootReducer } from "./reducers";
 import * as middlewares from './middlewares'
 
-export type ApplicationState = ApplicationStateInner;
+export type ApplicationState = ReturnType<typeof rootReducer>
 
 type WindowWithDevTools = Window & {
-    __REDUX_DEVTOOLS_EXTENSION__: () => StoreEnhancer<unknown, {}>
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: () => StoreEnhancer<unknown, {}>
     }
 
 const isReduxDevtoolsExtenstionExist = (arg: Window | WindowWithDevTools): arg is WindowWithDevTools  => {
-    return  '__REDUX_DEVTOOLS_EXTENSION__' in arg;
+    return  '__REDUX_DEVTOOLS_EXTENSION_COMPOSE__' in arg;
 }
 
-const enhancer = isReduxDevtoolsExtenstionExist(window) ? window.__REDUX_DEVTOOLS_EXTENSION__() : undefined
+const enhancer: any = isReduxDevtoolsExtenstionExist(window) ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
 
-export const store = createStore(rootReducer, enhancer as any, applyMiddleware(...Object.values(middlewares)));
+
+export const store = createStore(rootReducer, enhancer(applyMiddleware(...Object.values(middlewares))));
