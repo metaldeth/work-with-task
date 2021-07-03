@@ -19,5 +19,5 @@ export const editTask = (taskListId: number, taskId: number, editTaskData: EditT
 }
 
 export const removeTask = (taskListId: number, taskId: number): Promise<void> => {
-    return request<undefined, undefined>(`/task/${taskListId}/list/${taskId}`,)
+    return request<undefined, undefined>(`/task/${taskListId}/list/${taskId}`, Method.DELETE)
 }

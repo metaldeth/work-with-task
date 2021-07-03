@@ -49,8 +49,3 @@ export const removeTaskResAction = (taskListId: number, taskId: number): ActionT
     taskId,
     taskListId
 })
-
-// export const fectchCollectionTask = (taskListId: number):ActionType.FetchCollectionTask => ({
-//     type: constants.FETCH_COLLECTION_TASK,
-//     taskListId
-// })

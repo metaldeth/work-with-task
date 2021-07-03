@@ -1,0 +1,31 @@
+.task{
+    display: flex;
+    width: 80%;
+    justify-content: space-between
+}
+
+.button-block {
+    float: right;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.task-block {
+    float: left;
+}
+
+.taskInput {
+    display: block;
+    &:disabled{
+        color: black;
+        border: 2px solid #e8ecf4;
+    }
+}
+
+.saveTask {
+    &:disabled{
+        display: none;
+    }
+    
+}

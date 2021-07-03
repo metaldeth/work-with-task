@@ -19,7 +19,7 @@ export const TaskAdd = () => {
         const payload = {caption, description}
         dispatch(createTaskReqAction(
             payload,
-            taskListId
+            taskListId,
         ))
         history.replace('/')
     }
