@@ -50,6 +50,11 @@ export type RemoveTaskResAction = {
     taskListId: number
 }
 
+// export type FetchCollectionTask = {
+//     type: typeof constants.FETCH_COLLECTION_TASK,
+//     taskListId: number
+// }
+
 export type Union = 
 FetchTaskByListReqAction
 |FetchTaskByListResAction
@@ -60,3 +65,4 @@ FetchTaskByListReqAction
 |RemoveTaskReqAction
 |RemoveTaskResAction
 |RequestErrorAction
+// |FetchCollectionTask

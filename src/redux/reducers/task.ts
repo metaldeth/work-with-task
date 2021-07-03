@@ -10,12 +10,14 @@ export type TaskState = {
     loadStatusByList: Record<number, boolean>;
     // Мапа списка id тасков по taskListId
     listOfTaskByList: Record<number, number[]>;
+    // isLoaded: boolean
 }
 
 const initState: TaskState = {
     mapOfTaskById: {},
     loadStatusByList: {},
-    listOfTaskByList: {}
+    listOfTaskByList: {},
+    // isLoaded: false
 }
 
 export const taskReducer = (
@@ -35,6 +37,8 @@ export const taskReducer = (
         }
         case types.FETCH_TASK_BY_LIST_RES: {
             const { payload, taskListId } = actions;
+
+
 
             const updateMapOfTaskById = { ...state.mapOfTaskById };
             const listOfTaskId: number[] = [];

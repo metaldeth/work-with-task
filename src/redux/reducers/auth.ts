@@ -8,12 +8,14 @@ export type AuthState = {
     isAuth: boolean;
     isSingInProccess: boolean;
     isSingUpProccess: boolean;
+    isInitReqExicute: boolean;
 }
 
 const initState: AuthState = {
     isAuth:false,
     isSingInProccess: false,
     isSingUpProccess: false,
+    isInitReqExicute: false,
 }
 
 export const authReducer = (
@@ -31,7 +33,6 @@ export const authReducer = (
             return {
                 ...state,
                 isSingInProccess: false,
-                isAuth: true
             }
         }
         case types.SING_UP_REQ: {
@@ -49,7 +50,9 @@ export const authReducer = (
         case types.FETCH_MAIN_USER_DATA_RES: {
             return {
                 ...state,
-                user: actions.payload
+                user: actions.payload,
+                isAuth: true,
+                isInitReqExicute: true,
             }
         }
         case REQUEST_ERROR: {
@@ -57,6 +60,7 @@ export const authReducer = (
                 ...state,
                 isSingInProccess: false,
                 isSingUpProccess: false,
+                isInitReqExicute: true,
             }
         }
         default:

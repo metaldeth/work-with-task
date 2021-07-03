@@ -5,12 +5,14 @@ import { REQUEST_ERROR } from "../constans/system";
 
 export type TaskListState = {
     list: FetchTaskList[],
-    isLoaded: boolean
+    isLoaded: boolean,
+    selectId: number | null
 }
 
 const initState: TaskListState = {
     list:[],
-    isLoaded: false
+    isLoaded: false,
+    selectId: null
 }
 
 export const taskListReducer = (
@@ -35,7 +37,7 @@ export const taskListReducer = (
             const { payload } = actions
 
             const index = state.list.findIndex(item => item.id === payload.id);
-            if (index === -1) return state;
+            if (index === null) return state;
 
             const updateList: FetchTaskList[] = [
                 ...state.list.splice(0, index),
@@ -56,6 +58,14 @@ export const taskListReducer = (
                 list: state.list.filter(item => item.id !== id)
             };
             
+        }
+        case types.SELECT_TASK_LIST: {
+            const { id } = actions
+
+            return{
+                ...state,
+                selectId: id
+            }
         }
         default:
             return state;

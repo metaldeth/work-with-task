@@ -8,7 +8,7 @@ export type SingInReqAction = {
 }
 
 export type SingInResAction = {
-    type: typeof constants.SING_IN_RES
+    type: typeof constants.SING_IN_RES,
 }
 
 export type SingUpReqAction = {

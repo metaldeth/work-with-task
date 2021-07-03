@@ -42,6 +42,11 @@ export type RemoveTaskListResAction = {
     id: number
 }
 
+export type SelectTaskListAction = {
+    type: typeof constants.SELECT_TASK_LIST,
+    id: number
+}
+
 export type Union = 
     TaskListReqAction
     |TaskListResAction
@@ -52,3 +57,4 @@ export type Union =
     |RemoveTaskListReqAction
     |RemoveTaskListResAction
     |RequestErrorAction
+    |SelectTaskListAction

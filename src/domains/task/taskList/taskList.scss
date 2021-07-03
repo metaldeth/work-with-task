@@ -1,0 +1,23 @@
+.content{
+    width: 100%;
+    background-color: #e8ecf4;
+}
+
+.task{
+    height: 45px;
+    border: 1px solid black; 
+    margin: 10px;
+    padding-left: 45px;
+}
+
+.taskList__caption{
+    font-weight: 600;
+}
+
+.taskList__description{
+    font-weight: 400;
+}
+
+.taskList__name {
+    margin-left: 12px;
+}

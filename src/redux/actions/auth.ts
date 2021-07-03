@@ -8,7 +8,7 @@ export const singInReq = (payload: AuthInterfaces.SingInUser): ActionType.SingIn
 });
 
 export const singInRes = (): ActionType.SingInResAction => ({
-    type: constants.SING_IN_RES
+    type: constants.SING_IN_RES,
 });
 
 export const singUpReq = (payload: AuthInterfaces.SingUpUser): ActionType.SingUpReqAction => ({

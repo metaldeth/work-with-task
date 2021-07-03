@@ -21,25 +21,25 @@ export const SignIn = () => {
     return (
         <>
             <div className='authBlock'>
-            <input
-                type="text"
-                placeholder='E-mail'
-                className='authInput'
-                value={email}
-                onChange={event => setEmail(event.target.value)}
-            />
-            <input
-                type="password"
-                placeholder='Пароль'
-                className='authInput'
-                value={password}
-                onChange={event => setPassword(event.target.value)}
-            />
-            <button 
-                disabled={!isFullFormData}
-                className='authButton'
-                onClick={signIn}
-            >Sign In</button>
+                <input
+                    type="text"
+                    placeholder='E-mail'
+                    className='authInput'
+                    value={email}
+                    onChange={event => setEmail(event.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder='Пароль'
+                    className='authInput'
+                    value={password}
+                    onChange={event => setPassword(event.target.value)}
+                />
+                <button 
+                    disabled={!isFullFormData}
+                    className='authButton'
+                    onClick={signIn}
+                >Sign In</button>
             </div>
             <Link to='/auth/signUp'>To Sign Up</Link>
         </>

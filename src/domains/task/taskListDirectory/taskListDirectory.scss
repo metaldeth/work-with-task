@@ -1,0 +1,37 @@
+.taskListDirectory {
+    background-color: #8599a3;
+    // height: 100;
+}
+
+.taskList-button {
+    display: block;
+    text-align: left;
+    width: 150px;
+    height: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: #8599a3;
+    margin: 0;
+    padding: 0px;
+    padding-left: 15px;
+    border: 0px;
+    color: black;
+    transition: 0.5s;
+    :hover {
+        color: white;
+        text-shadow: 3px 3px 10px rgb(27, 55, 87);
+    }
+}
+
+// .taskList-button {
+//     display: block;
+//     text-align: left;
+//     width: 150px;
+//     font-size: 15px;
+//     background-color: #8599a3;
+//     border: 1px solid black;
+//     margin: 0;
+//     :hover {
+//         background-color: #335463;
+//     }
+// }

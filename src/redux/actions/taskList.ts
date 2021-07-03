@@ -1,6 +1,7 @@
 import * as TaskListInterfaces from "../../types/server/taskList";
 import * as constants from "../constans/taskList";
 import * as ActionType from './taskListTypes';
+import { useDispatch } from "react-redux";
 
 export const taskListReqAction = ():ActionType.TaskListReqAction => ({
     type: constants.TASK_LIST_REQ
@@ -42,5 +43,7 @@ export const removeTaskListResAction = (id: number): ActionType.RemoveTaskListRe
     id
 })
 
-
-
+export const selectTaskListAction = (id: number): ActionType.SelectTaskListAction => ({
+    type: constants.SELECT_TASK_LIST,
+    id
+})
