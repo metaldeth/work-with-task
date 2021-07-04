@@ -1,20 +1,23 @@
 import { useSelector } from "react-redux" 
-import { ApplicationState, store } from "../../../redux/store";
+import { ApplicationState } from "../../../redux/store";
 import { Task } from "../task";
-import { useDispatch } from "react-redux";
 import './taskList.scss'
 import { selectTasksByTaskList } from "../../../redux/selectors/tasks";
 import { selectTaskList } from "../../../redux/selectors/selectTaskList";
+import { TaskAdd } from "../task/taskAdd";
 
 export const TaskList = () => {
     const taskListId = useSelector((state: ApplicationState) => state.taskList.selectId);
     const listOfTask = useSelector(selectTasksByTaskList(taskListId));
     const taskListName = useSelector(selectTaskList(taskListId));
-    const dispatch = useDispatch();
+
+    if (!taskListId) return null
 
     return (
         <div className='content'>
-            <h3>{taskListName}</h3>
+            <div className='taskList__head'>
+                <div className='taskList__name'>{taskListName}</div>
+            </div>
             {listOfTask.map((task) => {
                 return(
                     <Task
@@ -23,7 +26,9 @@ export const TaskList = () => {
                     />
                 )
             })}
-            
+            <TaskAdd
+                taskListId={taskListId}
+            />
         </div>
     )
 }

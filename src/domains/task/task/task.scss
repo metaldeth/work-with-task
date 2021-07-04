@@ -29,3 +29,14 @@
     }
     
 }
+
+.taskAdd__form {
+    display: flex;
+    & :disabled {
+        display: none;
+    }
+}
+
+.taskAdd {
+    display: flex;
+}

@@ -2,11 +2,11 @@ import * as constants from "../constans/taskList";
 import * as TaskListInterfaces from "../../types/server/taskList";
 import {RequestErrorAction} from "./system";
 
-export type TaskListReqAction = {
-    type: typeof constants.TASK_LIST_REQ,
+export type FetchTaskListReqAction = {
+    type: typeof constants.FETCH_TASK_LIST_REQ,
 }
 
-export type TaskListResAction = {
+export type FetchTaskListResAction = {
     type: typeof constants.TASK_LIST_RES,
     payload: TaskListInterfaces.FetchTaskList[]
 }
@@ -48,8 +48,8 @@ export type SelectTaskListAction = {
 }
 
 export type Union = 
-    TaskListReqAction
-    |TaskListResAction
+    FetchTaskListReqAction
+    |FetchTaskListResAction
     |CreateTaskListReqAction
     |CreateTaskListResAction
     |EditTaskListReqAction
