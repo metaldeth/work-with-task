@@ -15,13 +15,13 @@ export const Task: FC<TaskProps> = memo((props) => {
     const task = props.task
     const taskListId = props.taskListid    
 
-    const [ active, setActive ] = useState(true)
+    const [ isEditable, setIsEditable ] = useState(true)
     const [ caption, setCaption ] = useState(task.caption)
     const [ description, setDescription ] = useState(task.description)
 
     const selectMode = () => {
-        setActive (!active)
-        if (!active) {
+        setIsEditable (!isEditable)
+        if (!isEditable) {
             setCaption(task.caption)
             setDescription(task.description)
         }
@@ -32,7 +32,7 @@ export const Task: FC<TaskProps> = memo((props) => {
     const editTask = () => {
         const payload = {caption, description, isComplete: false}
         dispatch(editTaskReqAction(payload, task.id, taskListId))
-        setActive(true)
+        setIsEditable(true)
     }
 
     const removeTask = () => {
@@ -48,7 +48,7 @@ export const Task: FC<TaskProps> = memo((props) => {
                     placeholder='caption'
                     className='taskInput'
                     value={caption}
-                    disabled={active}
+                    disabled={isEditable}
                     onChange={(e) => setCaption(e.target.value)}
                 />
                 <input 
@@ -56,7 +56,7 @@ export const Task: FC<TaskProps> = memo((props) => {
                     placeholder='description'
                     className='taskInput'
                     value={description}
-                    disabled={active}
+                    disabled={isEditable}
                     onChange={(e) => setDescription(e.target.value)}
                 />
             </div>
@@ -65,16 +65,16 @@ export const Task: FC<TaskProps> = memo((props) => {
                     className='editTask'
                     onClick={selectMode}
                 >
-                    {active ? 'редактировать' : 'отменить'}
+                    {isEditable ? 'редактировать' : 'отменить'}
                 </button>
                 <button
                     className='saveTask'
-                    disabled={active}
+                    disabled={isEditable}
                     onClick={editTask}
                 >
                     сохранить
                 </button>
-                {active && (
+                {isEditable && (
                     <button 
                         className='removeTask'
                         onClick={removeTask}

@@ -10,14 +10,14 @@ type TaskAddProps = {
 
 export const TaskAdd: FC<TaskAddProps> = (props) => {
 
-    const [ active, setActive ] = useState(true)
+    const [ isEditable, setIsEditable ] = useState(true)
     const [ caption, setCaption ] = useState('')
     const [ description, setDescription ] = useState('')
 
     const dispatch = useDispatch()
 
     const selectMode = () => {
-        setActive(!active)
+        setIsEditable(!isEditable)
     }
 
     const taskAdd = () => {
@@ -37,14 +37,14 @@ export const TaskAdd: FC<TaskAddProps> = (props) => {
         <div className='taskAdd'>
             <button
                 onClick={selectMode}
-            >{active ? 'создать' : 'отменить'}</button>
+            >{isEditable ? 'создать' : 'отменить'}</button>
             <div className='taskAdd__form'>
                 <input 
                     type="text"
                     placeholder='caption'
                     className='taskInput'
                     value={caption}
-                    disabled={active}
+                    disabled={isEditable}
                     onChange={(e) => setCaption(e.target.value)}
                 />
                 <input 
@@ -52,11 +52,11 @@ export const TaskAdd: FC<TaskAddProps> = (props) => {
                     placeholder='description'
                     className='taskInput'
                     value={description}
-                    disabled={active}
+                    disabled={isEditable}
                     onChange={(e) => setDescription(e.target.value)}
                 />
                 <button
-                    disabled={active || !isFullFormData}
+                    disabled={isEditable || !isFullFormData}
                     onClick={taskAdd}
                 >сохранить</button>
             </div>

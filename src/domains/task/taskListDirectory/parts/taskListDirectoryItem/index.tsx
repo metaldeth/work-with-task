@@ -15,11 +15,11 @@ export const TaskListDirectoryItem: FC<TaskListProps> = (props) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [caption, setCaption] = useState(props.caption)
-    const [active, setActive] = useState(true)
+    const [isEditable, setIsEditable] = useState(true)
 
     useEffect(() => {
-        if (active) setCaption(props.caption)
-    },[props.caption, active])
+        if (isEditable) setCaption(props.caption)
+    },[props.caption, isEditable])
 
     const selectTaskList = (id: number) => {
         dispatch(selectTaskListAction(id))
@@ -38,7 +38,7 @@ export const TaskListDirectoryItem: FC<TaskListProps> = (props) => {
     }
 
     const selectMode = () => {
-        setActive(!active)
+        setIsEditable(!isEditable)
         setCaption(props.caption)
     }
 
@@ -49,19 +49,19 @@ export const TaskListDirectoryItem: FC<TaskListProps> = (props) => {
                     value={caption} 
                     type='text' 
                     className='taskList__input' 
-                    disabled={active}
+                    disabled={isEditable}
                     onChange={(e) => setCaption(e.target.value)}
                 />
             </div>
             <button
-                disabled={active}
+                disabled={isEditable}
                 className='taskList__button'
                 onClick={editTaskList}
             >save</button>
             <button
                 className='taskList__button'
                 onClick={selectMode}
-            >{active ? 'edit' : 'cancel'}</button>
+            >{isEditable ? 'edit' : 'cancel'}</button>
             <button
                 className='taskList__button'
                 onClick={removeTaskList}

@@ -4,7 +4,7 @@ import { createTaskListReqAction } from "../../../../../redux/actions/taskList"
 import './taskListAdd.scss'
 
 export const TaskListAdd = () => {
-    const [active, setActive] = useState(true)
+    const [isEditable, setIsEditable] = useState(true)
     const [caption, setCaption] = useState('')
     const dispatch = useDispatch()
 
@@ -16,23 +16,23 @@ export const TaskListAdd = () => {
     }
 
     const selectMode = () => {
-        setActive(!active)
+        setIsEditable(!isEditable)
     }
     return(
         <div className='taskListAdd'>
             <input 
-                disabled={active}
+                disabled={isEditable}
                 type="text" 
                 value={caption}
                 onChange={e => setCaption(e.target.value)}
             />
             <button
-                disabled={active}
+                disabled={isEditable}
                 onClick={taskListAdd}
             >save</button>
             <button
                 onClick={selectMode}
-            >{active ? 'create task list' : 'cancel'}</button>
+            >{isEditable ? 'create task list' : 'cancel'}</button>
         </div>
     )
 } 
