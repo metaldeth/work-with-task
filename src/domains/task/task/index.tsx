@@ -4,13 +4,14 @@ import { ApplicationState } from "../../../redux/store";
 import { FetchTask } from "../../../types/server/task";
 import './task.scss'
 import { editTaskReqAction, removeTaskReqAction } from "../../../redux/actions/task";
+import { selectTaskListId } from "../../../redux/selectors/selectTaskList";
 
 type TaskProps = {
     task: FetchTask,
 }
 
 export const Task: FC<TaskProps> = memo((props) => {
-    const taskListId = useSelector((state: ApplicationState) => state.taskList.selectId)
+    const taskListId = useSelector(selectTaskListId())
     const dispatch = useDispatch()
 
     const task = props.task

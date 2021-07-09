@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { createTaskReqAction } from "../../../redux/actions/task";
 import { useHistory } from "react-router";
 import { ApplicationState } from "../../../redux/store";
+import { listOfTaskList } from "../../../redux/selectors/taskList";
 
 export const TaskAdd = () => {
     const [caption, setCaption] = useState('');
     const [description, setDiscription] = useState('');
     const [taskListId, setTaskListId] = useState(0)
 
-    const taskList = useSelector((state: ApplicationState) => state.taskList);
+    // const taskList = useSelector((state: ApplicationState) => state.taskList);
+    const taskList = useSelector(listOfTaskList())
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -22,8 +24,6 @@ export const TaskAdd = () => {
         ))
         history.replace('/')
     }
-
-    console.log(taskListId);
     
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setTaskListId(Number(e.target.value));
@@ -49,7 +49,7 @@ export const TaskAdd = () => {
                 onChange={event => setDiscription(event.target.value)}
             />
             <select value = {taskListId} onChange={handleChange}>
-                {taskList.list.map((item) => {
+                {taskList.map((item) => {
                     return(
                         <option value={item.id}>{item.caption}</option>
                     )})}

@@ -5,9 +5,10 @@ import { fetchTaskListReqAction } from "../../../redux/actions/taskList";
 import './taskListDirectory.scss'
 import { TaskListDirectoryItem } from "./parts/taskListDirectoryItem";
 import { TaskListAdd } from "./parts/taskListAdd";
+import { listOfTaskList } from "../../../redux/selectors/taskList";
 
 export const TaskListDirectory = () => {    
-    const taskList = useSelector((store: ApplicationState) => store.taskList.list)
+    const taskList = useSelector(listOfTaskList())
 
     const dispatch = useDispatch()
 
