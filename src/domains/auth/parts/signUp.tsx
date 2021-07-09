@@ -23,7 +23,7 @@ export const SignUp = () => {
         const mustRedirect = !isSignUpProcessed && !!prevIsSignUpProcessed && !hasError
         if (!mustRedirect) return;
         history.replace('/auth/signIn')
-    }, [isSignUpProcessed, prevIsSignUpProcessed, hasError])
+    }, [isSignUpProcessed, prevIsSignUpProcessed, hasError, history])
 
     const signUp = () => {
         dispatch(singUpReq({

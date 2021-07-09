@@ -2,16 +2,14 @@ import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createTaskReqAction } from "../../../redux/actions/task";
 import { useHistory } from "react-router";
-import { ApplicationState } from "../../../redux/store";
-import { listOfTaskList } from "../../../redux/selectors/taskList";
+import { selectListOfTaskList } from "../../../redux/selectors/selectTaskList";
 
 export const TaskAdd = () => {
     const [caption, setCaption] = useState('');
     const [description, setDiscription] = useState('');
     const [taskListId, setTaskListId] = useState(0)
 
-    // const taskList = useSelector((state: ApplicationState) => state.taskList);
-    const taskList = useSelector(listOfTaskList())
+    const taskList = useSelector(selectListOfTaskList())
 
     const dispatch = useDispatch();
     const history = useHistory();

@@ -7,16 +7,12 @@ export type TaskState = {
     mapOfTaskById: Record<number, FetchTask>;
     // Мапа статуса загрузки по taskListId
     loadStatusByList: Record<number, boolean>;
-    // Мапа списка id тасков по taskListId
-    listOfTaskByList: Record<number, number[]>;
     // isLoaded: boolean
 }
 
 const initState: TaskState = {
     mapOfTaskById: {},
-    loadStatusByList: {},
-    listOfTaskByList: {},
-    // isLoaded: false
+    loadStatusByList: {}
 }
 
 export const taskReducer = (
@@ -36,9 +32,6 @@ export const taskReducer = (
         }
         case types.FETCH_TASK_BY_LIST_RES: {
             const { payload, taskListId } = actions;
-
-
-
             const updateMapOfTaskById = { ...state.mapOfTaskById };
             const listOfTaskId: number[] = [];
             payload.forEach(item => {
@@ -49,10 +42,6 @@ export const taskReducer = (
             return {
                 ...state,
                 mapOfTaskById: updateMapOfTaskById,
-                listOfTaskByList: {
-                    ...state.listOfTaskByList,
-                    [taskListId]: listOfTaskId
-                },
                 loadStatusByList: {
                     ...state.loadStatusByList,
                     [taskListId]: true
@@ -60,20 +49,13 @@ export const taskReducer = (
             }
         }
         case types.CREATE_TASK_RES: {
-            const { payload, taskListId } = actions
+            const { payload } = actions
             
             return{
                 ...state,
                 mapOfTaskById: {
                     ...state.mapOfTaskById,
                     [payload.id]: payload
-                },
-                listOfTaskByList: {
-                    ...state.listOfTaskByList,
-                    [taskListId]: [
-                        ...state.listOfTaskByList[taskListId],
-                        payload.id
-                    ]
                 }
             }
         }
@@ -89,7 +71,7 @@ export const taskReducer = (
             }
         }
         case types.REMOVE_TASK_RES: {
-            const { taskListId, taskId } = actions
+            const { taskId } = actions
 
             const updateMapOfTaskById = { ...state.mapOfTaskById };
             delete updateMapOfTaskById[taskId];
@@ -97,10 +79,6 @@ export const taskReducer = (
             return{
                 ...state,
                 mapOfTaskById: updateMapOfTaskById,
-                listOfTaskByList: {
-                    ...state.listOfTaskByList,
-                    [taskListId]: state.listOfTaskByList[taskListId].filter(item => item !== taskId)
-                }
             }
         }
         default:

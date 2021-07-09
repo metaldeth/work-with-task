@@ -1,14 +1,13 @@
 import { useSelector } from "react-redux" 
-import { ApplicationState } from "../../../redux/store";
 import { Task } from "../task";
 import './taskList.scss'
-import { selectTasksByTaskList } from "../../../redux/selectors/tasks";
+import { selectTasksByTaskList } from "../../../redux/selectors/selectTasks";
 import { selectTaskList, selectTaskListId } from "../../../redux/selectors/selectTaskList";
 import { TaskAdd } from "../task/parts/taskAdd";
 import { memo } from "react";
 
 export const TaskList = memo(() => {
-    const taskListId = useSelector(selectTaskListId());
+    const taskListId = useSelector(selectTaskListId);
     const listOfTask = useSelector(selectTasksByTaskList(taskListId));
     const taskList = useSelector(selectTaskList(taskListId));
 
@@ -24,7 +23,7 @@ export const TaskList = memo(() => {
                 <Task
                     key={task.id}
                     task={task}
-                    taskListid={task.id}
+                    taskListid={taskListId}
                 />
             ))}
             <TaskAdd

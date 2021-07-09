@@ -1,10 +1,8 @@
 import { FC, useState, memo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ApplicationState } from "../../../redux/store";
+import { useDispatch } from "react-redux";
 import { FetchTask } from "../../../types/server/task";
 import './task.scss'
 import { editTaskReqAction, removeTaskReqAction } from "../../../redux/actions/task";
-import { selectTaskListId } from "../../../redux/selectors/selectTaskList";
 
 type TaskProps = {
     task: FetchTask,

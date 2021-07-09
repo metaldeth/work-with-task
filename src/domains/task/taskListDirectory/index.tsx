@@ -1,20 +1,19 @@
-import { ApplicationState } from "../../../redux/store";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTaskListReqAction } from "../../../redux/actions/taskList";
 import './taskListDirectory.scss'
 import { TaskListDirectoryItem } from "./parts/taskListDirectoryItem";
 import { TaskListAdd } from "./parts/taskListAdd";
-import { listOfTaskList } from "../../../redux/selectors/taskList";
+import { selectListOfTaskList } from "../../../redux/selectors/selectTaskList";
 
 export const TaskListDirectory = () => {    
-    const taskList = useSelector(listOfTaskList())
+    const taskList = useSelector(selectListOfTaskList())
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(fetchTaskListReqAction())
-    },[])
+    },[dispatch])
 
     return(
         <div className='taskListDirectory'>

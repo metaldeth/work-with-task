@@ -1,38 +1,43 @@
 import { FetchTaskList } from "../../types/server/taskList";
-import * as ActionTypes from "../actions/taskListTypes";
-import * as types from "../constans/taskList";
+import * as ActionTypesTaskList from "../actions/taskListTypes";
+import * as ActionTypesTask from "../actions/taskTypes";
+import * as typesTaskList from "../constans/taskList";
+import * as typesTask from "../constans/task";
+
 
 export type TaskListState = {
     list: FetchTaskList[],
     isLoaded: boolean,
-    selectId: number | null
+    selectId: number | null,
+    listOfTaskByList: Record<number, number[]>;
 }
 
 const initState: TaskListState = {
     list:[],
     isLoaded: false,
-    selectId: null
+    selectId: null,
+    listOfTaskByList: {},
 }
 
 export const taskListReducer = (
     state: TaskListState = initState,
-    actions: ActionTypes.Union
+    actions: ActionTypesTaskList.Union | ActionTypesTask.Union
 ): TaskListState => {
     switch (actions.type) {
-        case types.TASK_LIST_RES: {
+        case typesTaskList.TASK_LIST_RES: {
             return {
                 ...state,
                 list: actions.payload,
                 isLoaded: true
             }
         }
-        case types.CREATE_TASK_LIST_RES: {
+        case typesTaskList.CREATE_TASK_LIST_RES: {
             return {
                 ...state,
                 list: [...state.list, actions.payload]
             }
         }
-        case types.EDIT_TASK_LIST_RES: {
+        case typesTaskList.EDIT_TASK_LIST_RES: {
             const { payload } = actions
             const index = state.list.findIndex(item => item.id === payload.id);
             if (index === null) return state;
@@ -48,7 +53,7 @@ export const taskListReducer = (
                 list: updateList
             }
         }
-        case types.REMOVE_TASK_LIST_RES: {
+        case typesTaskList.REMOVE_TASK_LIST_RES: {
             const { id } = actions
 
             return {
@@ -57,12 +62,49 @@ export const taskListReducer = (
             };
             
         }
-        case types.SELECT_TASK_LIST: {
+        case typesTaskList.SELECT_TASK_LIST: {
             const { id } = actions
 
             return{
                 ...state,
                 selectId: id
+            }
+        }
+        case typesTask.FETCH_TASK_BY_LIST_RES: {
+            const { payload, taskListId } = actions;
+            const listOfTaskId: number[] = [];
+            payload.forEach(item => {
+                listOfTaskId.push(item.id);
+            })
+            return{
+                ...state,
+                listOfTaskByList: {
+                    ...state.listOfTaskByList,
+                    [taskListId]: listOfTaskId
+                },
+            }
+        }
+        case typesTask.CREATE_TASK_RES: {
+            const { payload, taskListId } = actions
+            return {
+                ...state,
+                listOfTaskByList: {
+                    ...state.listOfTaskByList,
+                    [taskListId]: [
+                        ...state.listOfTaskByList[taskListId],
+                        payload.id
+                    ]
+                }
+            }
+        }
+        case typesTask.REMOVE_TASK_RES: {
+            const { taskListId, taskId } = actions
+            return{
+                ...state,
+                listOfTaskByList: {
+                    ...state.listOfTaskByList,
+                    [taskListId]: state.listOfTaskByList[taskListId].filter(item => item !== taskId)
+                }
             }
         }
         default:

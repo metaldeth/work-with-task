@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchMainUserDataReq());
-  }, [])
+  }, [dispatch])
 
   if (!isInitReqExicute) return null; 
 
