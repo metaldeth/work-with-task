@@ -8,13 +8,14 @@ import { selectTaskListId } from "../../../redux/selectors/selectTaskList";
 
 type TaskProps = {
     task: FetchTask,
+    taskListid: number
 }
 
 export const Task: FC<TaskProps> = memo((props) => {
-    const taskListId = useSelector(selectTaskListId())
     const dispatch = useDispatch()
 
     const task = props.task
+    const taskListId = props.taskListid    
 
     const [ active, setActive ] = useState(true)
     const [ caption, setCaption ] = useState(task.caption)

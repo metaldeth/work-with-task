@@ -10,7 +10,7 @@ import { memo } from "react";
 export const TaskList = memo(() => {
     const taskListId = useSelector(selectTaskListId());
     const listOfTask = useSelector(selectTasksByTaskList(taskListId));
-    const taskListName = useSelector(selectTaskList(taskListId));
+    const taskList = useSelector(selectTaskList(taskListId));
 
 
     if (!taskListId) return null
@@ -18,12 +18,13 @@ export const TaskList = memo(() => {
     return (
         <div className='content'>
             <div className='taskList__head'>
-                <div className='taskList__name'>{taskListName}</div>
+                <div className='taskList__name'>{taskList?.caption}</div>
             </div>
             {listOfTask.map((task) => (
                 <Task
                     key={task.id}
                     task={task}
+                    taskListid={task.id}
                 />
             ))}
             <TaskAdd
