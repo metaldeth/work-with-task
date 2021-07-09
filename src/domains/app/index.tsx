@@ -1,13 +1,6 @@
-import React, { useEffect } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import { AuthGourd } from "../../components/authRoute";
-import { SignIn } from "../auth/signIn";
-import { SignUp } from "../auth/signUp";
-import { TaskAdd } from "../task/taskAdd";
-import { TaskListAdd } from "../task/taskListAdd";
-import { Task } from "../task/task";
-import { TaskListDirectory } from "../task/taskListDirectory";
-import { TaskList } from "../task/taskList";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchMainUserDataReq } from "../../redux/actions/auth";
 import { ApplicationState } from '../../redux/store';

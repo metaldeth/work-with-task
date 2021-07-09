@@ -1,8 +1,7 @@
-import { MiddlewareAPI, Dispatch, Middleware } from 'redux';
+import { Dispatch } from 'redux';
 import { StoreDataForMiddleware } from '../../../types/StoreDataForMiddleware';
-import { ApplicationState } from '../../store';
 import { Union as TaskListUnion } from '../../actions/taskListTypes';
-import { createTaskListResAction, fetchTaskListReqAction } from '../../actions/taskList';
+import { createTaskListResAction } from '../../actions/taskList';
 import { requestError } from '../../actions/system';
 import { CREATE_TASK_LIST_REQ } from '../../constans/taskList';
 import { createTaskList } from '../../../api/taskList';
@@ -12,9 +11,6 @@ export const createTaskListMiddleware = (storeData: StoreDataForMiddleware) => (
     createTaskList(action.payload)
         .then((payload) => {
             storeData.dispatch(createTaskListResAction(payload))
-        })
-        .then(() => {
-            storeData.dispatch(fetchTaskListReqAction())
         })
         .catch((err) => {
             storeData.dispatch(requestError())

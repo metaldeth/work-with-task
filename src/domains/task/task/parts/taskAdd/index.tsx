@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { FC } from "react"
 import { useDispatch } from "react-redux"
-import { createTaskReqAction } from "../../../redux/actions/task"
-import './task.scss'
+import { createTaskReqAction } from "../../../../../redux/actions/task"
+import './taskAdd.scss'
 
 type TaskAddProps = {
     taskListId: number

@@ -1,7 +1,5 @@
-import { FetchTask } from "../../types/server/task";
 import * as ActionTypes from "../actions/system";
 import * as types from "../constans/system";
-import { REQUEST_ERROR } from "../constans/system";
 
 export type SystemState = {
     hasError: boolean;

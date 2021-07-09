@@ -1,6 +1,5 @@
-import { MiddlewareAPI, Dispatch, Middleware } from 'redux';
+import { Dispatch } from 'redux';
 import { StoreDataForMiddleware } from '../../../types/StoreDataForMiddleware';
-import { ApplicationState } from '../../store';
 import { Union as TaskActionUnion } from '../../actions/taskTypes';
 import { editTaskResAction } from '../../actions/task';
 import { requestError } from '../../actions/system';

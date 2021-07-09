@@ -1,7 +1,6 @@
 import * as TaskListInterfaces from "../../types/server/taskList";
 import * as constants from "../constans/taskList";
 import * as ActionType from './taskListTypes';
-import { useDispatch } from "react-redux";
 
 export const fetchTaskListReqAction = ():ActionType.FetchTaskListReqAction => ({
     type: constants.FETCH_TASK_LIST_REQ

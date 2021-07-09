@@ -1,8 +1,6 @@
-import React, {useState} from "react";
-// import './signIp.style.sass';
+import {useState} from "react";
 import { useDispatch } from "react-redux";
 import { createTaskListReqAction } from "../../../redux/actions/taskList";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 
 export const TaskListAdd = () => {

@@ -1,12 +1,10 @@
-import { MiddlewareAPI, Dispatch, Middleware } from 'redux';
+import { Dispatch } from 'redux';
 import { StoreDataForMiddleware } from '../../../types/StoreDataForMiddleware';
-import { ApplicationState } from '../../store';
 import { Union as TaskListUnion } from '../../actions/taskListTypes';
 import { fetchTaskListResAction } from '../../actions/taskList';
 import { requestError } from '../../actions/system';
 import { FETCH_TASK_LIST_REQ } from '../../constans/taskList';
 import { fetchTaskList } from '../../../api/taskList';
-import { fetchTaskReqAction } from '../../actions/task';
 
 export const fetchTaskListMiddleware = (storeData: StoreDataForMiddleware) => (next: Dispatch) => (action: TaskListUnion) => {
     if (action.type !== FETCH_TASK_LIST_REQ) return next(action);

@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createTaskReqAction } from "../../../redux/actions/task";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import { ApplicationState } from "../../../redux/store";
 

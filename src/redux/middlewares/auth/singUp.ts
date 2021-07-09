@@ -1,6 +1,5 @@
-import { MiddlewareAPI, Dispatch, Middleware } from 'redux';
+import { Dispatch } from 'redux';
 import { StoreDataForMiddleware } from '../../../types/StoreDataForMiddleware';
-import { ApplicationState } from '../../store';
 import { Union as AuthActionUnion } from '../../actions/authTypes';
 import { singUpRes } from '../../actions/auth';
 import { requestError } from '../../actions/system';

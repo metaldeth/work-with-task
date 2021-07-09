@@ -1,5 +1,5 @@
-import { SignIn } from "./signIn"
-import { SignUp } from "./signUp"
+import { SignIn } from "./parts/signIn"
+import { SignUp } from "./parts/signUp"
 import { Route, Switch } from 'react-router-dom';
 
 

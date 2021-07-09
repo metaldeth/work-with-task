@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import './signUp.style.sass';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { singUpReq } from "../../redux/actions/auth";
-import {ApplicationState} from '../../redux/store'
-import {usePrev} from '../../hooks/usePrev';
+import { singUpReq } from "../../../redux/actions/auth";
+import {ApplicationState} from '../../../redux/store'
+import {usePrev} from '../../../hooks/usePrev';
 
 
 

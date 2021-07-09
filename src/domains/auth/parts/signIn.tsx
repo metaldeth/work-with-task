@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 // import './signIp.style.sass';
 import { useDispatch } from "react-redux";
-import { singInReq } from "../../redux/actions/auth";
+import { singInReq } from "../../../redux/actions/auth";
 import { Link } from "react-router-dom";
 
 export const SignIn = () => {

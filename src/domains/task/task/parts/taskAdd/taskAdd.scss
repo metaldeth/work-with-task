@@ -1,0 +1,19 @@
+
+.taskInput {
+    display: block;
+    &:disabled{
+        color: black;
+        border: 2px solid #e8ecf4;
+    }
+}
+
+.taskAdd__form {
+    display: flex;
+    & :disabled {
+        display: none;
+    }
+}
+
+.taskAdd {
+    display: flex;
+}

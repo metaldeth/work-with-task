@@ -1,9 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Link, Route, Switch, useHistory } from 'react-router-dom';
-import { fetchTaskListReqAction, selectTaskListAction, editTaskListReqAction, removeTaskListReqAction } from "../../../redux/actions/taskList";
-import { fetchTaskReqAction } from "../../../redux/actions/task";
+import { useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
+import { selectTaskListAction, editTaskListReqAction, removeTaskListReqAction } from "../../../../../redux/actions/taskList";
+import { fetchTaskReqAction } from "../../../../../redux/actions/task";
 import { FC } from "react"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import './taskListDirectoryItem.scss'
 
 type TaskListProps = {
     caption: string,
@@ -16,6 +17,10 @@ export const TaskListDirectoryItem: FC<TaskListProps> = (props) => {
     const [caption, setCaption] = useState(props.caption)
     const [active, setActive] = useState(true)
 
+    useEffect(() => {
+        if (active) setCaption(props.caption)
+    },[props.caption, active])
+
     const selectTaskList = (id: number) => {
         dispatch(selectTaskListAction(id))
         dispatch(fetchTaskReqAction(id))
@@ -26,8 +31,7 @@ export const TaskListDirectoryItem: FC<TaskListProps> = (props) => {
         const payload = {caption: caption}
         dispatch(editTaskListReqAction(payload, props.id))
         selectMode()
-        // dispatch(fetchTaskListReqAction())
-    }
+    } 
 
     const removeTaskList = () => {
         dispatch(removeTaskListReqAction(props.id))

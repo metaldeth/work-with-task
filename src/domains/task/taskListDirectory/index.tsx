@@ -1,16 +1,13 @@
-import { ApplicationState, store } from "../../../redux/store";
-import React, { useState, useEffect } from "react";
+import { ApplicationState } from "../../../redux/store";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTaskListReqAction, selectTaskListAction } from "../../../redux/actions/taskList";
-import { fetchTaskReqAction } from "../../../redux/actions/task";
-import { Link, Route, Switch, useHistory } from 'react-router-dom';
-import { FetchTaskList } from "../../../types/server/taskList";
+import { fetchTaskListReqAction } from "../../../redux/actions/taskList";
 import './taskListDirectory.scss'
-import { TaskListDirectoryItem } from "./taskListDirectoryItem";
-import { TaskListAdd } from "./taskListAdd";
+import { TaskListDirectoryItem } from "./parts/taskListDirectoryItem";
+import { TaskListAdd } from "./parts/taskListAdd";
 
 export const TaskListDirectory = () => {    
-    const taskList = useSelector((store: ApplicationState) => store.taskList)
+    const taskList = useSelector((store: ApplicationState) => store.taskList.list)
 
     const dispatch = useDispatch()
 
@@ -20,7 +17,7 @@ export const TaskListDirectory = () => {
 
     return(
         <div className='taskListDirectory'>
-            {taskList.list.map((item) => {
+            {taskList.map((item) => {
                     return(
                         <TaskListDirectoryItem
                             key={item.id}

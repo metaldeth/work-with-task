@@ -15,28 +15,9 @@
     float: left;
 }
 
-.taskInput {
-    display: block;
-    &:disabled{
-        color: black;
-        border: 2px solid #e8ecf4;
-    }
-}
-
 .saveTask {
     &:disabled{
         display: none;
     }
     
-}
-
-.taskAdd__form {
-    display: flex;
-    & :disabled {
-        display: none;
-    }
-}
-
-.taskAdd {
-    display: flex;
 }

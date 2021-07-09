@@ -1,7 +1,6 @@
 import { FetchTaskList } from "../../types/server/taskList";
 import * as ActionTypes from "../actions/taskListTypes";
 import * as types from "../constans/taskList";
-import { REQUEST_ERROR } from "../constans/system";
 
 export type TaskListState = {
     list: FetchTaskList[],
@@ -35,14 +34,13 @@ export const taskListReducer = (
         }
         case types.EDIT_TASK_LIST_RES: {
             const { payload } = actions
-
             const index = state.list.findIndex(item => item.id === payload.id);
             if (index === null) return state;
 
             const updateList: FetchTaskList[] = [
-                ...state.list.splice(0, index),
+                ...state.list.slice(0, index),
                 payload,
-                ...state.list.splice(index),
+                ...state.list.slice(index + 1),
             ];
 
             return {

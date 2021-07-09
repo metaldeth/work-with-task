@@ -1,17 +1,15 @@
-import { useState } from "react";
-import { FC } from "react";
+import { FC, useState, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ApplicationState } from "../../../redux/store";
 import { FetchTask } from "../../../types/server/task";
 import './task.scss'
 import { editTaskReqAction, removeTaskReqAction } from "../../../redux/actions/task";
-import { EditTaskReqAction } from "../../../redux/actions/taskTypes";
 
 type TaskProps = {
     task: FetchTask,
 }
 
-export const Task: FC<TaskProps> = (props) => {
+export const Task: FC<TaskProps> = memo((props) => {
     const taskListId = useSelector((state: ApplicationState) => state.taskList.selectId)
     const dispatch = useDispatch()
 
@@ -22,7 +20,7 @@ export const Task: FC<TaskProps> = (props) => {
     const [ description, setDescription ] = useState(task.description)
 
     const selectMode = () => {
-        setActive (active ? false: true)
+        setActive (!active)
         if (!active) {
             setCaption(task.caption)
             setDescription(task.description)
@@ -40,6 +38,7 @@ export const Task: FC<TaskProps> = (props) => {
     const removeTask = () => {
         dispatch(removeTaskReqAction(task.id, taskListId))
     }
+
 
     return(            
         <div className='task'>
@@ -65,17 +64,25 @@ export const Task: FC<TaskProps> = (props) => {
                 <button
                     className='editTask'
                     onClick={selectMode}
-                >{active ? 'редактировать' : 'отменить'}</button>
+                >
+                    {active ? 'редактировать' : 'отменить'}
+                </button>
                 <button
                     className='saveTask'
                     disabled={active}
                     onClick={editTask}
-                >сохранить</button>
-                <button 
-                    className='removeTask'
-                    onClick={removeTask}
-                >удалить</button>
+                >
+                    сохранить
+                </button>
+                {active && (
+                    <button 
+                        className='removeTask'
+                        onClick={removeTask}
+                    >
+                        удалить
+                    </button>
+                )}
             </div>
         </div>
     )
-}
+})

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { createTaskListReqAction } from "../../../redux/actions/taskList"
-import './taskListDirectory.scss'
+import { createTaskListReqAction } from "../../../../../redux/actions/taskList"
+import './taskListAdd.scss'
 
 export const TaskListAdd = () => {
     const [active, setActive] = useState(true)
@@ -32,7 +32,7 @@ export const TaskListAdd = () => {
             >save</button>
             <button
                 onClick={selectMode}
-            >{active ? 'create task list' : 'calncel'}</button>
+            >{active ? 'create task list' : 'cancel'}</button>
         </div>
     )
-}
+} 

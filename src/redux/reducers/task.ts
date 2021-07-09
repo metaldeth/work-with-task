@@ -1,7 +1,6 @@
 import { FetchTask } from "../../types/server/task";
 import * as ActionTypes from "../actions/taskTypes";
 import * as types from "../constans/task";
-import { REQUEST_ERROR } from "../constans/system";
 
 export type TaskState = {
     // Мапа всех тасков хранимая по id
