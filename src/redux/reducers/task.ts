@@ -7,12 +7,14 @@ export type TaskState = {
     mapOfTaskById: Record<number, FetchTask>;
     // Мапа статуса загрузки по taskListId
     loadStatusByList: Record<number, boolean>;
+    selectTaskId: number | null
     // isLoaded: boolean
 }
 
 const initState: TaskState = {
     mapOfTaskById: {},
-    loadStatusByList: {}
+    loadStatusByList: {},
+    selectTaskId: null
 }
 
 export const taskReducer = (
@@ -79,6 +81,13 @@ export const taskReducer = (
             return{
                 ...state,
                 mapOfTaskById: updateMapOfTaskById,
+            }
+        }
+        case types.SELECT_TASK: {
+
+            return{
+                ...state,
+                selectTaskId: actions.taskId
             }
         }
         default:

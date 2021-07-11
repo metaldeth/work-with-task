@@ -12,22 +12,26 @@
 
 .app_nav{
     height: 30px;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    background-color: #8599a3;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #222222;
+    color: rgb(177, 177, 177);
 }
 
 .nav-item{
     margin: 0px 20px;
-    margin-bottom: 10px;
-    width: 150px;
+    float: left;
     height: 20px;
     text-align: center;
     text-decoration: none;
-    color: black;
+    color: rgb(177, 177, 177);
     transition: 0.5s;
     font-weight: 800;
+    & .exit {
+        float: right;
+    }
     &:hover{
         color: rgb(72, 156, 252);
         text-shadow: 3px 3px 10px rgb(27, 55, 87);

@@ -1,14 +1,13 @@
 
-.taskInput {
-    display: block;
-    &:disabled{
-        color: black;
-        border: 2px solid #e8ecf4;
-    }
-}
-
 .taskAdd__form {
     display: flex;
+    flex-direction: column;
+    & .taskInput {
+        display: block;
+        background-color: white;
+        border-color: rgb(187, 187, 187);
+        border-radius: 5px;
+    }
     & :disabled {
         display: none;
     }

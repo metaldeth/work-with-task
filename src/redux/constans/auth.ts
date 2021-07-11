@@ -6,3 +6,5 @@ export const SING_IN_RES = 'SING_IN_RES';
 
 export const FETCH_MAIN_USER_DATA_REQ = 'FETCH_MAIN_USER_DATA_REQ';
 export const FETCH_MAIN_USER_DATA_RES = 'FETCH_MAIN_USER_DATA_RES';
+
+export const LOG_OUT = 'LOG_OUT'

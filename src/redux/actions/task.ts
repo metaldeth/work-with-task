@@ -49,3 +49,8 @@ export const removeTaskResAction = (taskListId: number, taskId: number): ActionT
     taskId,
     taskListId
 })
+
+export const selectTaskAction = (taskId: number | null): ActionType.SelectTaskAction => ({
+    type: constants.SELECT_TASK,
+    taskId
+})

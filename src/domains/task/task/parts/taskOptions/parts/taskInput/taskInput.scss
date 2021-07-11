@@ -1,0 +1,26 @@
+.taskInput {
+    display: flex;
+    background-color: #e8e8e8;  
+}
+
+textarea {
+    resize: none;
+}
+
+.taskInput {
+    background-color: #e8e8e8;
+    border: 2px solid #e8e8e8;
+    color: black;
+    & :disabled{
+        border: 2px solid #e8e8e8;
+    }
+}
+
+.button-block{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    justify-content: space-evenly;
+    width: 60px;
+    height: 100px;
+}

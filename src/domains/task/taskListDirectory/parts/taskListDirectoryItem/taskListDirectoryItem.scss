@@ -1,5 +1,6 @@
 .taskListDirectury__item {
     display: flex;
+    color: #b1b1b1;
     justify-content: space-between;
     align-items: center;
 }
@@ -11,14 +12,14 @@
     width: 100px;
     font-size: 13px;
     font-weight: 600;
-    background-color: #8599a3;
+    background-color: #424242;
     margin: 0;
-    border: 1px solid black;
+    border: 1px solid #6e6e6e;
     border-radius: 5px;
-    color: black;
+    color: #b1b1b1;
     transition: 0.5s;
     &:disabled {
-        border: 1px solid #8599a3;
+        border: 1px solid #424242;
     }
     &:hover {
         text-shadow: 3px 3px 10px rgb(27, 55, 87);
@@ -27,7 +28,5 @@
 
 .taskList__button {
     float: right;
-    &:disabled {
-        display: none;
-    }
+    color: #b1b1b1;
 }

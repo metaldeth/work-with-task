@@ -28,3 +28,7 @@ export const fetchMainUserDataRes = (payload: AuthInterfaces.MainUserData): Acti
     type: constants.FETCH_MAIN_USER_DATA_RES,
     payload
 })
+
+export const logOutAction = (): ActionType.LogOutAction => ({
+    type: constants.LOG_OUT
+})

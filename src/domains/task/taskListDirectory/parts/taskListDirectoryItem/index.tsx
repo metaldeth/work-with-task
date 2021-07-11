@@ -1,14 +1,21 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { selectTaskListAction, editTaskListReqAction, removeTaskListReqAction } from "../../../../../redux/actions/taskList";
-import { fetchTaskReqAction } from "../../../../../redux/actions/task";
+import { fetchTaskReqAction, selectTaskAction } from "../../../../../redux/actions/task";
 import { FC } from "react"
 import { useState, useEffect } from "react";
 import './taskListDirectoryItem.scss'
+import { useCallback } from "react";
+import { VoidFunctionComponent } from "react";
+import { GrCheckmark, GrClear, GrEdit, GrTrash } from "react-icons/gr";
+import { editTask } from "../../../../../api/task";
+
+type EditTaskList = (caption: string, id: number) => void
 
 type TaskListProps = {
     caption: string,
-    id: number
+    id: number,
+    editTaskList: EditTaskList
 }
 
 export const TaskListDirectoryItem: FC<TaskListProps> = (props) => {
@@ -21,9 +28,12 @@ export const TaskListDirectoryItem: FC<TaskListProps> = (props) => {
         if (isEditable) setCaption(props.caption)
     },[props.caption, isEditable])
 
+    // const editTaskList = useCallback(props.editTaskList, [])
+
     const selectTaskList = (id: number) => {
         dispatch(selectTaskListAction(id))
         dispatch(fetchTaskReqAction(id))
+        dispatch(selectTaskAction(null))
         history.push(`/taskList`)
     }
 
@@ -35,6 +45,7 @@ export const TaskListDirectoryItem: FC<TaskListProps> = (props) => {
 
     const removeTaskList = () => {
         dispatch(removeTaskListReqAction(props.id))
+        history.push('/')
     }
 
     const selectMode = () => {
@@ -53,7 +64,7 @@ export const TaskListDirectoryItem: FC<TaskListProps> = (props) => {
                     onChange={(e) => setCaption(e.target.value)}
                 />
             </div>
-            <button
+            {/* <button
                 disabled={isEditable}
                 className='taskList__button'
                 onClick={editTaskList}
@@ -65,7 +76,21 @@ export const TaskListDirectoryItem: FC<TaskListProps> = (props) => {
             <button
                 className='taskList__button'
                 onClick={removeTaskList}
-            >del</button>
+            >del</button> */}
+            {isEditable ? <GrEdit
+                    className='taskList__button' 
+                    onClick={selectMode}
+                /> : <GrClear 
+                    className='taskList__button' 
+                    onClick={selectMode}
+                />}
+            {isEditable ? <GrTrash 
+                    className='taskList__button' 
+                    onClick={removeTaskList}
+                /> : <GrCheckmark 
+                    className='taskList__button' 
+                    onClick={editTaskList}
+                />}
         </div>
     )
 }

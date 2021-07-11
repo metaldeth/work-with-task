@@ -1,6 +1,8 @@
 .content{
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-    background-color: #e8ecf4;
+    background-color: white;
 }
 
 .task{

@@ -29,6 +29,10 @@ export type FetchMainUserDataResAction = {
     payload: AuthInterfaces.MainUserData
 }
 
+export type LogOutAction = {
+    type: typeof constants.LOG_OUT
+}
+
 export type Union = 
     SingInReqAction
     | SingInResAction
@@ -36,4 +40,5 @@ export type Union =
     | SingUpResAction
     | FetchMainUserDataReqAction
     | FetchMainUserDataResAction
-    | RequestErrorAction;
+    | RequestErrorAction
+    | LogOutAction

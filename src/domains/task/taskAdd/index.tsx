@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createTaskReqAction } from "../../../redux/actions/task";
 import { useHistory } from "react-router";
 import { selectListOfTaskList } from "../../../redux/selectors/selectTaskList";
+import './taskAdd.scss'
 
 export const TaskAdd = () => {
     const [caption, setCaption] = useState('');

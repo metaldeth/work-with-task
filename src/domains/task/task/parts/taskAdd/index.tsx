@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { FC } from "react"
+import { GrAdd, GrCheckmark, GrEdit, GrSubtractCircle } from "react-icons/gr"
 import { useDispatch } from "react-redux"
 import { createTaskReqAction } from "../../../../../redux/actions/task"
 import './taskAdd.scss'
@@ -35,9 +36,8 @@ export const TaskAdd: FC<TaskAddProps> = (props) => {
 
     return(
         <div className='taskAdd'>
-            <button
-                onClick={selectMode}
-            >{isEditable ? 'создать' : 'отменить'}</button>
+            {isEditable ? <GrAdd onClick={selectMode}/> : <GrSubtractCircle onClick={selectMode}/>}
+            {( !isEditable && isFullFormData) ? <GrCheckmark onClick={taskAdd}/> : null}
             <div className='taskAdd__form'>
                 <input 
                     type="text"
@@ -55,10 +55,6 @@ export const TaskAdd: FC<TaskAddProps> = (props) => {
                     disabled={isEditable}
                     onChange={(e) => setDescription(e.target.value)}
                 />
-                <button
-                    disabled={isEditable || !isFullFormData}
-                    onClick={taskAdd}
-                >сохранить</button>
             </div>
         </div>
     )

@@ -12,3 +12,12 @@ export const selectTaskNamesByTaskList = (taskListId: number | null) => (state: 
   const taskList = selectTasksByTaskList(taskListId)(state);
   return taskList.map(item => item.caption);
 }
+
+export const selectTask = (taskId: number | null) => (state: ApplicationState) => {
+  if (!taskId) return null
+  return state.task.mapOfTaskById[taskId]
+}
+
+export const selectTaskId = (state: ApplicationState) => {
+  return state.task.selectTaskId
+}

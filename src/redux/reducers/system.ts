@@ -22,8 +22,8 @@ export const systemReducer = (
         }
         default:
             return {
-              ...state,
-              hasError: false
+                ...state,
+                hasError: false
             };
     }
 };
