@@ -2,7 +2,7 @@
   "name": "work-with-task",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://88.198.161.251:3000",
+  "proxy": "https://todo.x-serv.net/api",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
