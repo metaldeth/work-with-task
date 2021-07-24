@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux"
 import { editTaskReqAction, removeTaskReqAction } from "../../../../../../../redux/actions/task"
 import './taskInput.scss'
 import { GrEdit, GrSubtractCircle, GrCheckmark, GrClose, GrTrash } from "react-icons/gr";
+import { RiDeleteBin5Fill, RiEditFill, RiSaveFill } from "react-icons/ri";
+import { TiCancel } from "react-icons/ti";
 
 type Props = {
     caption: string,
@@ -67,8 +69,20 @@ export const TaskInput = (props: Props) => {
                 />
             </div>
             <div className='button-block'>
-                {isEditable ? <GrEdit onClick={selectMode}/> : <GrSubtractCircle onClick={selectMode}/>}
-                {isEditable ? <GrTrash onClick={removeTask}/> : <GrCheckmark onClick={editTask}/>}
+                {isEditable ? <RiEditFill   
+                        className='task__button' 
+                        onClick={selectMode}
+                    /> : <TiCancel
+                        className='task__button' 
+                        onClick={selectMode}
+                />}
+                {isEditable ? <RiDeleteBin5Fill 
+                        className='task__button' 
+                        onClick={removeTask}
+                    /> : <RiSaveFill 
+                        className='task__button' 
+                        onClick={editTask}
+                />}
             </div>
         </div>
     )

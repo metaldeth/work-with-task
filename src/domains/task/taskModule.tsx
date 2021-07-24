@@ -14,8 +14,10 @@ import { ApplicationState } from '../../redux/store';
 
 export const TaskModule = () => {
     const userName = useSelector((state:ApplicationState) => state.auth.user?.username)
-    // const dispatch = useDispatch()
-    // const logOut = dispatch(logOutAction)
+    const dispatch = useDispatch()
+    const logOut = () => {
+        dispatch(logOutAction())
+    }
     return(
         <div className='app'>
             <nav className='app_nav'>
@@ -24,22 +26,25 @@ export const TaskModule = () => {
                 <Link className='nav-item' to='/task/add'><RiFileAddFill/></Link>
                 <Link className='nav-item' to='/taskList/add'><RiFolderAddFill/></Link>
                 {userName}
-                <IoExit className='nav-item exit'/>
-                {/* <IoExit className='nav-item exit' onClick={logOut}/> */}
+                <IoExit className='nav-item exit' onClick={logOut}/>
             </nav>
             <div className='app_content'>
-                <TaskListDirectory/>
-                <Switch>
-                    <Route path='/task/add'>
-                        <TaskAdd/>
-                    </Route>
-                    <Route path='/taskList/add'>
-                        <TaskListAdd/>
-                    </Route>
-                    <Route path='/taskList'>
-                        <TaskList/>
-                    </Route>
-                </Switch>
+                <div className='taskListDirectory'>
+                    <TaskListDirectory/>
+                </div>
+                <div className='content'>
+                    <Switch>
+                        <Route path='/task/add'>
+                            <TaskAdd/>
+                        </Route>
+                        <Route path='/taskList/add'>
+                            <TaskListAdd/>
+                        </Route>
+                        <Route path='/taskList'>
+                            <TaskList/>
+                        </Route>
+                    </Switch>
+                </div>
             </div>
         </div>
     )

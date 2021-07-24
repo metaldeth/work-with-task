@@ -57,8 +57,8 @@ export const authReducer = (
         }
         case types.LOG_OUT: {
             return {
-                ...state,
-                isAuth:false,
+                ...initState,
+                isInitReqExicute: true,
             }
         }
         case REQUEST_ERROR: {

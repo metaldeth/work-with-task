@@ -24,6 +24,7 @@ export const SignIn = () => {
                 <input
                     type="text"
                     placeholder='E-mail'
+                    name='email'
                     className='authInput'
                     value={email}
                     onChange={event => setEmail(event.target.value)}
@@ -31,6 +32,7 @@ export const SignIn = () => {
                 <input
                     type="password"
                     placeholder='Пароль'
+                    name='password'
                     className='authInput'
                     value={password}
                     onChange={event => setPassword(event.target.value)}

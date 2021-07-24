@@ -24,7 +24,7 @@ export const TaskListDirectory = () => {
     } 
 
     return(
-        <div className='taskListDirectory'>
+        <>
             {taskList.map((item) => {
                     return(
                         <TaskListDirectoryItem
@@ -37,6 +37,6 @@ export const TaskListDirectory = () => {
                 }
             )}
             <TaskListAdd/>
-        </div>
+        </>
     )
 }

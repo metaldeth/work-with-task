@@ -16,7 +16,7 @@ export const TaskList = memo(() => {
     if (!taskListId) return null
 
     return (
-        <div className='content'>
+        <div className='task-list-conteiner'>
             <div className='content__taskList'>
                 <div className='taskList__head'>
                     <div className='taskList__name'>{taskList?.caption}</div>

@@ -3,6 +3,23 @@
     color: #b1b1b1;
     justify-content: space-between;
     align-items: center;
+    .taskList__options {
+        display: none;
+    }
+}
+.taskListDirectury__item:hover{
+    .taskList__options {
+        display: block;
+        stroke: rgb(72, 156, 252);
+        .taskList__button {
+            color:  #b1b1b1;
+            cursor: pointer;
+            transition: 0.5s;
+            :hover {
+                color: rgb(72, 156, 252);
+            }
+        }
+    }
 }
 
 .taskList__input {
@@ -17,6 +34,7 @@
     border: 1px solid #6e6e6e;
     border-radius: 5px;
     color: #b1b1b1;
+    cursor: pointer;
     transition: 0.5s;
     &:disabled {
         border: 1px solid #424242;
@@ -24,9 +42,4 @@
     &:hover {
         color:rgb(72, 156, 252);
     }
-}
-
-.taskList__button {
-    float: right;
-    color: #b1b1b1;
 }

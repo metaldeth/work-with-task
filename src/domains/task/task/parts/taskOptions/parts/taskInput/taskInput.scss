@@ -24,3 +24,12 @@ textarea {
     width: 60px;
     height: 100px;
 }
+
+.task__button {
+    color: black;
+    cursor: pointer;
+    transition: 0.5s;
+    & :hover{
+        color:rgb(72, 156, 252);
+    }
+}

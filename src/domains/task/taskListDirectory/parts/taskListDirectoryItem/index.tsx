@@ -8,6 +8,8 @@ import './taskListDirectoryItem.scss'
 import { useCallback } from "react";
 import { VoidFunctionComponent } from "react";
 import { GrCheckmark, GrClear, GrEdit, GrTrash } from "react-icons/gr";
+import { RiDeleteBin5Fill, RiEditFill, RiSaveFill } from "react-icons/ri"
+import { TiCancel } from "react-icons/ti"
 import { editTask } from "../../../../../api/task";
 
 type EditTaskList = (caption: string, id: number) => void
@@ -64,33 +66,22 @@ export const TaskListDirectoryItem: FC<TaskListProps> = (props) => {
                     onChange={(e) => setCaption(e.target.value)}
                 />
             </div>
-            {/* <button
-                disabled={isEditable}
-                className='taskList__button'
-                onClick={editTaskList}
-            >save</button>
-            <button
-                className='taskList__button'
-                onClick={selectMode}
-            >{isEditable ? 'edit' : 'cancel'}</button>
-            <button
-                className='taskList__button'
-                onClick={removeTaskList}
-            >del</button> */}
-            {isEditable ? <GrEdit
-                    className='taskList__button' 
-                    onClick={selectMode}
-                /> : <GrClear 
-                    className='taskList__button' 
-                    onClick={selectMode}
+            <div className='taskList__options'>
+                {isEditable ? <RiEditFill   
+                        className='taskList__button' 
+                        onClick={selectMode}
+                    /> : <TiCancel
+                        className='taskList__button' 
+                        onClick={selectMode}
                 />}
-            {isEditable ? <GrTrash 
-                    className='taskList__button' 
-                    onClick={removeTaskList}
-                /> : <GrCheckmark 
-                    className='taskList__button' 
-                    onClick={editTaskList}
+                {isEditable ? <RiDeleteBin5Fill 
+                        className='taskList__button' 
+                        onClick={removeTaskList}
+                    /> : <RiSaveFill 
+                        className='taskList__button' 
+                        onClick={editTaskList}
                 />}
+            </div>
         </div>
     )
 }
