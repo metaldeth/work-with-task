@@ -19,7 +19,7 @@ export const TaskListAdd = () => {
 
     return(
         <div className = "taskListAdd">
-            taskListCreate
+            TaskListCreate
             <input
                 type="text"
                 placeholder='caption'
